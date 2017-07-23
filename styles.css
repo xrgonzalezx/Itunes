@@ -1,0 +1,67 @@
+html {
+  background-image: url("music_background_img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container{
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+  text-transform: capitalize;
+}
+
+.music-player {
+  width: 65rem;
+  margin-left: 15rem;
+}
+
+hr{
+  background-color: gray;
+  height: 1px;
+  border: 0;
+  margin-top: 60px;
+}
+h2{
+  color:black;
+}
+h3{
+  color: black;
+}
+
+#musicsearch{
+  width: 60rem;
+  margin-left: 14rem;
+}
+
+.button{
+  height: 35px;
+width: 115px;
+border-radius: 5px;
+}
+
+.music{
+  display: flex;
+    flex-wrap: wrap;
+
+      width: auto;
+      margin-bottom: 10px;
+}
+
+.wrapper {
+  color: white;
+border-color: white;
+  border: solid;
+  width: 270px;
+  margin-bottom: 10px;
+}
+
+img{
+    width: 9rem;
+    height: 8rem;
+}
