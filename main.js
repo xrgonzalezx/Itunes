@@ -1,43 +1,62 @@
-let searchbar = document.querySelector("#musicsearch");
-let button = document.querySelector(".button");
-let music = document.querySelector(".music");
+let siteControl = document.querySelector(".wholepage")
+let searchButton = document.querySelector(".searchButton");
+let musicPlayer = document.querySelector(".musicPlayer")
+let albumButton = document.querySelectorAll(".albumBtn")
+var audioSource = document.querySelector(".audioSource");
+let input = document.querySelector(".inputforsong");
+let searchResults = document.querySelector(".results");
+//EventL starts , whole function
+siteControl.addEventListener("click", function(e) {
+  let inputValue = input.value;
+  console.log("e is: ", e)
+  if (e.target === searchButton) {
+    searchResults.innerHTML = "";
+    fetch(`https://itunes.apple.com/search?term=${inputValue}`).then(
 
-button.addEventListener("click", function searchbar() {
-  music.innerHTML = "";
-  fetch("https://itunes.apple.com/search?term=" + musicsearch.value)
-    .then(function(response) {
-      if (response.status !== 200) {
-        console.log(response.status);
-        return;
-      }
-      response.json().then(function(obj) {
+        function(response) {
 
-        obj.results.forEach(function(results) {
+          if (response.status !== 200) {
+            console.log(response.status);
+            return;
+          }
 
-          let imagesource = results.artworkUrl100
-          let title = results.trackName
-          let artist = results.artistName
-          let musicdemo = results.previewUrl
+          response.json().then(function(obj) {
 
-          results = `
-          <div class="wrapper">
-           <h3>${title} </h3>
-           <h2>${artist}</h2>
-           <br>
-           <a href="${results.artistName}">
-           <a href="${results.previewUrl}">
-           <img src="${imagesource}" onError="this.src=''"></a>
-          </div>`;
+            let results = obj.results;
 
 
 
-          music.innerHTML += results;
+            console.log(results.forEach(function(track) {
+              console.log("results is: ", track);
 
-        });
-      })
+              let albumCover = track.artworkUrl100
+              let artist = track.artistName
+              let songTitle = track.trackName
+              var sample = track.previewUrl
+              console.log(artist)
 
-    })
-    .catch(function(error) {
-      console.log('Fetch Error :-S', err);
-    });
+
+              let renderTracks =
+              `<div class="wrapper">
+                  <h3>${artist}</h3>
+                  <div class="sampleSrc" src="${sample}"></div>
+                  <a href="#" src="${sample}"><button class="albumBtn" name="button" ><img class="image" value="${sample}" src="${albumCover}" alt="album_cover"> </button></a>
+                  <div id="title">${songTitle}</div>
+                </div>`
+
+              searchResults.innerHTML += renderTracks;
+            }));
+          });
+        })
+      .catch(function(err) {
+        console.log("fetch error :-S", err);
+      });
+  }
+//music sample to top audio sr= inputforsong
+  if(e.target && e.target.matches("img.image")){
+      console.log("Button pressed", e.target);
+      audioSource.src = e.target.getAttribute('value');
+      musicPlayer.load();
+      musicPlayer.play();
+  }
 })

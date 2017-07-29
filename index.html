@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>iTunes Music Search</title>
+  <title>iTunes Music Site</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-  <body>
-  <div class="container">
+<body>
+  <div class="wholepage">
     <header>
       <h1>UNQUESTIONABLY STUNNING MUSIC SITE</h1>
     </header>
 
     <section class="player">
-      <audio class="music-player" controls="controls" src=""></audio>
-    </section>
-<hr>
 
-    <section class="searchfield">
-      <!-- if you add the form tags back here then after user types artist in and hits search no results will be returned
+      <audio  class="musicPlayer" controls>
+      <source class="audioSource" src=""></source></audio>
+
+    </section>
+    <section class="search">
+
       <form class="search-form">
-        <input type="search" id="musicsearch"  name="search" value="" placeholder="Search Artists or Band">
-        <button type="submit" class="button"  name="button" value=""  placeholder="Search">Search</button>
-      </form> -->
-      <input type="search" id="musicsearch"  name="search" value="" placeholder="Search Artists or Band">
-      <button type="submit" class="button"  name="button" value=""  placeholder="Search">Search</button>
+        <input class="inputforsong" type="text" name="search" placeholder="Search for Song Or Artist" value="">
+
+        <input class="searchButton" type="reset" name="searchButton" value="Search">
+      </form>
     </section>
+    <section class="results" type="reset" ></section>
 
-
-     <section class="music"</section>
   </div>
   <script src="main.js"></script>
-  </body>
+</body>
 </html>
